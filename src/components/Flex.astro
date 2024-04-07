@@ -1,0 +1,36 @@
+---
+interface Props {
+  direction: "row" | "column";
+  wrap: boolean;
+  grow: boolean;
+  shrink: boolean;
+  justify: "start" | "end" | "center" | "between" | "around";
+  align: "start" | "end" | "center" | "stretch";
+}
+
+const { direction, wrap, grow, shrink, justify, align } = Astro.props;
+---
+
+<div
+  class:list={[
+    "flex",
+    {
+      "flex-row": direction === "row",
+      "flex-col": direction === "column",
+      "flex-wrap": wrap,
+      "flex-grow": grow,
+      "flex-shrink": shrink,
+      "justify-start": justify === "start",
+      "justify-end": justify === "end",
+      "justify-center": justify === "center",
+      "justify-between": justify === "between",
+      "justify-around": justify === "around",
+      "items-start": align === "start",
+      "items-end": align === "end",
+      "items-center": align === "center",
+      "items-stretch": align === "stretch",
+    },
+  ]}
+>
+  <slot />
+</div>
