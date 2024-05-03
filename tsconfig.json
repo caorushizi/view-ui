@@ -1,3 +1,10 @@
 {
-  "extends": "astro/tsconfigs/strict"
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "types": ["@testing-library/jest-dom"]
+  },
+  "include": ["**/*.ts", "**/*.tsx", "./vitest.setup.ts"],
+  "exclude": ["node_modules"]
 }
