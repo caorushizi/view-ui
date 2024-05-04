@@ -1,37 +1,35 @@
-import {
-  createTheme,
-  style,
-  createVar,
-  styleVariants,
-} from "@vanilla-extract/css";
+import { style, styleVariants } from "@vanilla-extract/css";
 
-export const accentVar = createVar();
-
-export const [themeClass, vars] = createTheme({
-  color: {
-    brand: "blue",
-  },
-  font: {
-    body: "arial",
-  },
+export const button = style({
+  outline: "none",
+  position: "relative",
+  display: "inline-block",
+  fontWeight: 400,
+  whiteSpace: "nowrap",
+  textAlign: "center",
+  backgroundImage: "none",
+  border: "1px solid transparent",
+  cursor: "pointer",
+  transition: "all 0.3s",
+  userSelect: "none",
+  touchAction: "manipulation",
+  borderRadius: "4px",
 });
 
 const palette = {
-  primary: "blue",
-  secondary: "aqua",
+  primary: {
+    color: "white",
+    background: "#1677ff",
+    boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.1)",
+  },
+  secondary: {
+    color: "white",
+    background: "green",
+    boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.1)",
+  },
 };
 
-export const exampleStyle = style({
-  backgroundColor: vars.color.brand,
-  fontFamily: vars.font.body,
-  color: "white",
-  padding: 10,
-  border: 0,
-});
-
-const base = style({ padding: 12 });
-
-export const variant = styleVariants(palette, (paletteColor) => [
-  base,
-  { background: paletteColor },
-]);
+export const buttonType = styleVariants(
+  palette,
+  (paletteColor) => paletteColor
+);

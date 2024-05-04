@@ -1,18 +1,17 @@
-import React, { useState, type FC, type PropsWithChildren } from "react";
-import { themeClass, exampleStyle, variant } from "./styles.css";
+import { type FC, type PropsWithChildren } from "react";
+import { button, buttonType } from "./styles.css";
 import clsx from "clsx";
 
 interface ButtonProps extends PropsWithChildren {
-  type?: "primary" | "secondary";
+  type?: keyof typeof buttonType;
   size?: "small" | "medium" | "large";
 }
 
 const Button: FC<ButtonProps> = ({ type, children }) => {
   const cls = clsx([
-    exampleStyle,
+    button,
     {
-      [variant.primary]: type === "primary",
-      [variant.secondary]: type === "secondary",
+      [buttonType[type!]]: !!type,
     },
   ]);
 
